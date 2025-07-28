@@ -9,16 +9,16 @@ create table if not exists blood_group (
 );
 --User Table
 create table if not exists members(
-    user_Id varchar(10) auto_increment primary key,
+    user_Id int(10) auto_increment primary key,
     Name varchar(50) not null,
     DOB date;
     Gender enum('Male','Female','Other'),
     blood_group_id int,
     Email varchar(100) not null,
     Password varchar(256) not null,
-    Phone varchar (10) not null,
+    Phone varchar(10) not null,
     Address varchar(200) ,
-    role enum('admin','donar') default 'donor',
+    role enum('admin','donor') default 'donor',
     is_active boolean default true,
     created_at timestamp default current_timestamp,
     foreign key (blood_group_id) references blood_group(blood_id)

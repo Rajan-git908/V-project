@@ -57,6 +57,8 @@
     margin: 10px;
     padding: 5px;
     display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 .required {
     color: red;
