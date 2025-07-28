@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+.container {
+    background-color: antiquewhite;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.logo img {
+    height: 100%;
+    width:80px;
+    border-radius: 70%;
+}
+.navlink {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+.navlink li a, button a {
+    text-decoration: none;
+    color: brown;
+    cursor: pointer;
+}
+.navlink li a:hover, button a:hover {
+    color: red;
+}
+.navlink button a {
+    color: white;
+    background-color:red;
+    border-radius: 10%;
+}
+
+
