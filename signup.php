@@ -1,3 +1,45 @@
+<?php 
+$sucess=0;
+$user=0;
+
+if($_SERVER['REQUEST_METHOD']=='post'){
+    include 'dbms connection.php';
+
+$name=$_POST['name'];
+$dob=$_POST['dob']; 
+$gender=$_POST['gender'];
+$blood_group=$_POST['blood_group'];
+$email=$_POST['email'];
+$password=$_POST['password'];
+$c_password=$_POST['confirm_password'];
+
+$number=$_POST['number'];
+$address=$_POST['address'];
+   
+
+
+$sql="SELECT *FROM MEMBERS WHERE $email='email";
+$result=mysqli_query($conn,$sql);
+if($result){
+    $num=mysqli_num_rows($result);
+    if($num>0){
+            $user=1;
+    }else{
+        $sql="Insert into member(Name,DOB,Gender,Blood_Group,Email,Password,Phone,Address) values ('$name','$dob','$gender','$blood_group','$email','$password','$phone','$address')";
+        if(mysqli_query($conn,$sql)){
+            $sucess=1;
+        }else{
+             echo mysqli_connect_error($conn);
+        }
+    }
+
+}
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +51,23 @@
 </head>
 
 <body>
+    <?php 
+    
+  if($user){
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error! user alrready exit</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+
+if($sucess){
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Congrates, your are suceesfully resistered</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+  
+    ?>
     <div class="container-form">
         <form action="signup.php" method="post">
             <div class="form-header">Registration Form</div>
