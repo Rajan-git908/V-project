@@ -37,3 +37,44 @@
 }
 
 
+/*Registration form style*/
+.container-form {
+    align-content: center;
+    border: 4px solid black;
+    background-color: aqua;
+    margin: 40px;
+    border-radius: 5%;
+}
+.form-header {
+    text-align: center;
+    margin-top: 10px;
+    background-color: greenyellow;
+    font-size: 30px;
+    padding: 3px;
+    border-radius: 12px;
+}
+.form-body {
+    margin: 10px;
+    padding: 5px;
+    display: grid;
+}
+.required {
+    color: red;
+}
+.gender {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+.form-body label {
+    padding: 6px;
+}
+.form-body input {
+    padding: 6px;
+}
+.form-body button {
+    color: rgb(255, 255, 255);
+    background-color: red;
+    border-radius: 5px;
+
+}

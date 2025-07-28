@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -39,10 +40,10 @@
             <input type="text" name="address">
             <label >Date Of Birth<span class="required">*</span></label>
             <input type="date" name="dob">
-            <label >Gender<span class="required">*</span></label>
+           <div class="gender"><label >Gender<span class="required">*</span></label>
             <input type="radio" name="gender" value="Male">Male
             <input type="radio" name="gender" value="Female">Female
-            <input type="radio" name="gender" value="Other">Other
+            <input type="radio" name="gender" value="Other">Other</div>
             <button type="submit" value="submit">Register</button>
             </div>
         </form>
