@@ -47,6 +47,51 @@
     background-color: #00b32a;
 }
 
+/*home body part design*/
+body {
+    padding: 3%;
+}
+h2{
+    color: #ff0000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+}
+.hero {
+background-image: url('/V-project/Images/cover.jpg') ;
+height: 400px;
+width: 100%;
+}
+.cover{
+    
+    justify-items: center;
+    padding: 100px;
+}
+.cover p{
+    text-align: justify;
+}
+.cover-button button{
+    background-color: #ff0000;
+    padding:5px;
+    margin: 5px;
+    border-radius: 10%;
+    border-color: aliceblue;
+    color: aliceblue;
+}
+.cover-button button:hover{
+    background-color: aqua;
+    color: black;
+}
+.cover-2{
+    justify-items: center;
+    padding: 100px;
+    background-color: antiquewhite;
+}
+
+
+
+
+
 
 /*Registration & Login form style*/
 .container-form {
