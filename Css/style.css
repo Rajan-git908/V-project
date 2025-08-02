@@ -151,7 +151,31 @@ width: 100%;
     transform: translatex(-5px);
     background-color: #00ff6a;
 }
+.need {
+    text-align: center;
+    padding: 50px;
+    
+}
+.need button, .donation-center button {
+    color: white;
+    background-color: #ff0000;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 10px;
+    margin: 30px;
 
+}
+
+.need button:hover, .donation-center button:hover {
+    background-color: aqua;
+    color: black;
+}
+
+.donation-center {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 40px;
+}
 
 
 
