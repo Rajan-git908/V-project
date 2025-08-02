@@ -31,7 +31,7 @@ $address=$_POST['address'];
            $sucess=1;
            session_start();
            $_SESSION['email']='email';
-           header('Location:index.html');
+           //header('Location:index.html');
       }else{
           echo ("error: ".mysqli_connect_error());
    }
@@ -61,13 +61,13 @@ $address=$_POST['address'];
      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
      <strong>Error! user alrready exit</strong>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    /div>';
+    </div>';
    }
     if($sucess){
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Congrates, your are suceesfully resistered</strong>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
+    </div>';
 }
      ?>
        
@@ -110,7 +110,9 @@ $address=$_POST['address'];
             <label for="gender_female">Female</label>
             <input type="radio" name="gender" value="Other" id="gender_other">
             <label for="gender_other">Other</label></div>
-            <input type="submit" value="submit">
+            <button type="submit" value="submit">Register</button>
+            <a href="Login.php">You are already member, Login
+            </a>
             </div>
         </form>
     </div>
