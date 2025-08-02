@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Css/dashboard.css">
 </head>
 <body>
-    
+    <nav>
+        <div class="header">
+            <div class="logo"><img src="../V-project/Images/logo.jpg" alt="missisng image"></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="logout.php">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
 <div class="profile">
     <div class="profile-head">
         <h1 id="name">Rajan Sharma</h1>
