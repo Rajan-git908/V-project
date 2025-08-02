@@ -87,8 +87,70 @@ width: 100%;
     padding: 100px;
     background-color: antiquewhite;
 }
+.container-body{
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-top: 20px;
+}
+.body-content {
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-around;
+}
+.body-content > div {
+    flex:1;
+    margin: 10px;
+    padding:10px;
+    color:black;
+    background-color: #ff6464;
+   box-shadow: 0 4px 10px rgba(214, 6, 6, 0.432);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
 
+}
+.body-content > div:hover {
+  transform: translateY(-5px); 
+}
 
+.donate-eligible, .donate-eligible h2 {
+    background-color: antiquewhite;
+    justify-content: space-around;
+    display: flex;
+    padding: 10px;
+}
+.donate-eligible > div{
+    flex:1;
+    box-shadow: 0 4px 10px #373a3885;
+    padding: 30px;
+    border-radius: 10px;
+    margin-block: 5px;
+    row-gap: 10px;
+    transition: transform 0.3s ease;
+}
+.donate-eligible > div:hover{
+    transform: translateY(-6px);
+}
+.n li {
+    font-size: 17px;
+    font-weight: bold;
+    list-style: none;
+}
+.eligible button {
+    color: red;
+    border-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 20px;
+    align-self: center;
+    transition: transform 0.3s ease;
+}
+.eligible button:hover{
+    transform: translatex(-5px);
+    background-color: #00ff6a;
+}
 
 
 
