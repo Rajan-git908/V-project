@@ -116,6 +116,7 @@ $address=$_POST['address'];
             </div>
         </form>
     </div>
+    <?php include '../V-project/Include/footer.php' ?>
 </body>
 
 </html>

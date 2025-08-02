@@ -61,5 +61,7 @@ if($num>0){
         </form>
 
     </div>
+
+    <?php include '../V-project/Include/footer.php' ?>
 </body>
 </html>
