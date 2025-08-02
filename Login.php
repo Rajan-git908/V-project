@@ -11,10 +11,11 @@ $result=mysqli_query($conn,$sql);
 if($result){
 $num=mysqli_num_rows($result);
 if($num>0){
-    echo " login successfull ";
+    //echo " login successfull ";
     $sucess=1;
+    header('location:dashboard.php');
 }else{
-    echo "invalid creditional";
+    //echo "invalid creditional";
     $user=1;
 }
 
@@ -33,7 +34,7 @@ if($num>0){
      <?php
     if($user){
      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong>Error! Invalid Creditionals</strong>
+     <strong>Error! Invalid creditional</strong>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
    }
