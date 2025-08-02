@@ -1,9 +1,8 @@
 <?php 
+require_once '../V-project/Include/header.php';
 $sucess=0;
 $user=0;
-
-//if($_SERVER['REQUEST_METHOD']=='post'){
-    include 'dbms connection.php';
+include 'dbms connection.php';
 
 $name=$_POST['name'];
 $dob=$_POST['dob']; 
@@ -30,6 +29,8 @@ $address=$_POST['address'];
             //echo "data inserted sucessfully";
             
            $sucess=1;
+           session_start();
+           $_SESSION['email']='email';
            header('Location:index.html');
       }else{
           echo ("error: ".mysqli_connect_error());
@@ -63,11 +64,11 @@ $address=$_POST['address'];
     /div>';
    }
     if($sucess){
-       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-     <strong>sucessfully saved</strong>
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    /div>'; 
-    }
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Congrates, your are suceesfully resistered</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
      ?>
        
     <div class="container-form">
