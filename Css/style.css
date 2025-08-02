@@ -124,11 +124,12 @@ width: 100%;
 }
 .donate-eligible > div{
     flex:1;
-    box-shadow: 0 4px 10px #373a3885;
+    box-shadow: 0 4px 10px #373a38be;
     padding: 30px;
     border-radius: 10px;
     margin-block: 5px;
     row-gap: 10px;
+
     transition: transform 0.3s ease;
 }
 .donate-eligible > div:hover{
@@ -138,6 +139,9 @@ width: 100%;
     font-size: 17px;
     font-weight: bold;
     list-style: none;
+}
+.eligible ul li {
+    list-style:square;
 }
 .eligible button {
     color: red;
