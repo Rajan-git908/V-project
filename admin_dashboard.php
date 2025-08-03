@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="Css/dashboard.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 
@@ -22,7 +22,9 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#about">About Us</a></li>
+            <li><a href="donate.php">Add Donation</a></li>
             <li><a href="logout.php">Log out</a></li>
+
         </ul>
     </div>
 </nav>
