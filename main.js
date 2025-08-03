@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li> <i class="fas fa-map-marker-alt"></i>  ${data.Address}
                     <li> <i class="fas fa-tint"></i>  ${data.blood_group_id}
                     <li><i class="fas fa-calendar-check"></i>  ${data.role}
-                    <li> Last donation: 2023-10-15</li>
+                    <li> Last donation: ${data.date}</li>
                 <li> Next eligible: 2023-12-15</li>
                 `;
                 document.getElementById("totaldonations").textContent = data.total_donations;
