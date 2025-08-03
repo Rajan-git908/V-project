@@ -32,3 +32,18 @@ INSERT IGNORE INTO blood_groups (group_name) VALUES
 --default Admin 
 Insert into members(Name,DOB,Gender,Blood_Group_id,Email,Password,Phone,Address,role) 
 values ('Ajit Shah','2003-07-05','Male','3','ajitshah000@gmail.com','9090','9817622807','janakpur','admin');
+
+--Donation history Table 
+CREATE TABLE donation_history (
+  Donation_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  donation_date DATE NOT NULL,
+  volume_ml INT CHECK (volume_ml > 0),
+  location VARCHAR(100),
+  remarks TEXT,
+  FOREIGN KEY (user_id) REFERENCES members(user_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+

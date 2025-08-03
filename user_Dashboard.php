@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="Css/dashboard.css">
+    <script src="main.js"></script>
 </head>
 <body data-user-id="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
 
@@ -48,7 +49,9 @@
             <h4>Next Milestone</h4>
             <h2 id="count2"></h2>
         </div>
-        <div class="graph"></div>
+        <div class="graph">
+            <canvas id="donationChart"></canvas>
+        </div>
     </div>
 </div>
 
@@ -59,8 +62,7 @@
     </div>
 </div>
 
-<script src="main.js">
-</script>
+
 
 </body>
 </html>
