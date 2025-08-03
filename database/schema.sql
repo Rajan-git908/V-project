@@ -28,3 +28,7 @@ create table if not exists members(
 --default blood group
 INSERT IGNORE INTO blood_groups (group_name) VALUES 
 ('A+'), ('A-'), ('B+'), ('B-'), ('AB+'), ('AB-'), ('O+'), ('O-');
+
+--default Admin 
+Insert into members(Name,DOB,Gender,Blood_Group_id,Email,Password,Phone,Address,role) 
+values ('Ajit Shah','2003-07-05','Male','3','ajitshah000@gmail.com','9090','9817622807','janakpur','admin');
