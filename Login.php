@@ -1,28 +1,36 @@
 <?php
-$sucess=0;
 $user=0;
 include_once '../V-project/Include/header.php';
 include 'dbms connection.php';
+session_start();
 
-$email=$_POST['email'];
-$password=$_POST['password'];
-$sql="Select *from members where email='$email' and password='$password'";
-$result=mysqli_query($conn,$sql);
-if($result){
-$num=mysqli_num_rows($result);
-if($num>0){
-    //echo " login successfull ";
-    $sucess=1;
-    header('location:dashboard.php');
-}else{
-    //echo "invalid creditional";
-    $user=1;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    $sql = "SELECT user_id, password, role FROM members WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        if ($password=== $row['password'] ){
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role'] = $row['role'];
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $user = 1; // Invalid credentials
+        }
+    } else {
+        $user = 1; // No user found
+    }
 }
 
-}else{
-    echo "Error:". mysqli_errno($conn);
-}
-?><!DOCTYPE html>
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,13 +45,7 @@ if($num>0){
      <strong>Error! Invalid creditional</strong>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
-   }
-    if($sucess){
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Congrates, your are Login Sucessfully</strong>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
-}
+    }
      ?>
     <div class="container-form">
         <form action="Login.php" method="post">
