@@ -19,3 +19,30 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("AJAX error:", error));
 });
+
+
+//graph
+fetch("fetch_donation_data.php").then(response=>response.json()).then(monthlyData=>{
+const labels= ['Jan', 'Feb', 'Mar', 'Apr', 'May','june','july','Aug','Sep','Oct','Nov','Dec'];
+
+const ctx = document.getElementById('donationChart').getContext('2d');
+const donationChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels:labels,
+        datasets: [{
+            label: 'Donations',
+            data: monthlyData,
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+})
+.catch(error=>console.error("chart data error:", error));
