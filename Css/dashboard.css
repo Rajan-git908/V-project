@@ -35,3 +35,15 @@ position: relative;
     background-color: cyan;
     transform: translateY(-5px);
 }
+.profile{
+    background-color: antiquewhite;
+}
+.profile-head{
+    color: black;
+    background-color: red;
+    border-color: black;
+    border-radius: 10%;
+}
+.profile-body {
+    color: yellowgreen;
+}
