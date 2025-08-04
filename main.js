@@ -67,21 +67,7 @@ function loadDonationHistory() {
         });
     }
 
- const donationData = [
-        { date: '2023-10-15', volume: 450, location: 'Central Blood Bank', remarks: 'Routine donation' },
-        { date: '2023-09-10', volume: 450, location: 'Mobile Unit - Downtown', remarks: 'Emergency drive' },
-        { date: '2023-07-20', volume: 450, location: 'Central Blood Bank', remarks: '' },
-        { date: '2023-06-05', volume: 450, location: 'Westside Hospital', remarks: 'Monthly donation' }
-    ];
-
-    
-
-    // Sample blood requests
-    const bloodRequests = [
-        { id: 101, bloodType: 'O+', hospital: 'City General', urgency: 'urgent', date: '2023-11-10' },
-        { id: 102, bloodType: 'A-', hospital: 'Westside Medical', urgency: 'normal', date: '2023-11-15' },
-        { id: 103, bloodType: 'AB+', hospital: 'Childrens Hospital', urgency: 'urgent', date: '2023-11-05' }
-    ];
+ 
 
       function loadBloodRequests() {
         const container = document.getElementById('requestsList');

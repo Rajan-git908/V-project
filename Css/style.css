@@ -59,7 +59,7 @@ h2{
     font-weight: bold;
 }
 .hero {
-background-image: url('/V-project/Images/cover.jpg') ;
+background-image: url('cover.jpg') ;
 height: 400px;
 width: 100%;
 }

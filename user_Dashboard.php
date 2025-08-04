@@ -1,3 +1,18 @@
+<?php
+include 'dbms connection.php';
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $receiver_id=$_POST['receiver_id'];
+    $patient_name=$_POST['patient_name'];
+    $blood_group=$_POST['blood_group'];
+    $location=$_POST['location'];
+    $date=$_POST['date'];
+     
+    $sql="INSERT INTO blood_request (Receiver_id,Patient_Name,Blood_group,Location,Date) values ('$receiver_id','$patient_name','$blood_group','$location','$date')";
+    mysqli_query($conn,$sql);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -203,15 +218,8 @@
             <form action="user_Dashboard.php" method="post">
 
                <label for="receiver_id">Receiver Id:</label>
-                <select name="receiver_id" id="receiver_id" required>
-                <?php
-                // Fetch members from members table
-                $members = $conn->query("SELECT user_id, Name FROM members");
-                while ($row = $members->fetch_assoc()) {
-                    echo "<option value='{$row['user_id']}'>{$row['user_id']}</option>";
-                }
-                ?>
-                </select>
+                <input type="number" name="receiver_id" id="receiver_id" required>
+            
                     <input type="text" name="patient_name" placeholder="Patient Name" required>
                     <select name="blood_group" required>
                         <option value="">Select Blood Group</option>
@@ -238,17 +246,7 @@
                             <h4>Total Donations</h4>
                             <h2 id="totalDonations">8</h2>
                         </div>
-                        <div>
-                            <h4>Lives Impacted</h4>
-                            <h2 id="livesImpacted">24</h2>
-                        </div>
-                        <div>
-                            <h4>Next Milestone</h4>
-                            <h2 id="nextMilestone">10 Donations</h2>
-                        </div>
-                        <div class="graph">
-                            <canvas id="donationChart"></canvas>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -337,5 +335,4 @@
         // Sample data loading for donations
     </script>
 </body>
-
 </html>

@@ -24,7 +24,7 @@ $address=$_POST['address'];
     //echo ("error: data already exit");
     $user=1;
    }else{
-        $sql="Insert into members(Name,DOB,Gender,Blood_Group_id,Email,Password,Phone,Address) values ('$name','$dob','$gender','$blood_group','$email','$password','$number','$address')";
+        $sql="Insert into members(Name,DOB,Gender,Blood_Group,Email,Password,Phone,Address) values ('$name','$dob','$gender','$blood_group','$email','$password','$number','$address')";
         if(mysqli_query($conn,$sql)){
             //echo "data inserted sucessfully";
             
@@ -63,16 +63,11 @@ $address=$_POST['address'];
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
    }
-    if($sucess){
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Congrates, your are suceesfully resistered</strong>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-}
+  
      ?>
        
     <div class="container-form">
-        <form action="signup.php" method="post">
+        <form action="signup.php" method="post" onsubmit="return registerformvalidate()">
             <div class="form-header">Registration Form</div>
             <div class="form-body">
              
@@ -87,14 +82,14 @@ $address=$_POST['address'];
             <label for="blood">Blood Group</label>
            <select name="blood" id="blood" required> 
                 <option value="">Select Blood Group</option>
-                <option value="1">A+</option>
-                <option value="2">A-</option>
-                <option value="3">B+</option>
-                <option value="4">B-</option>
-                <option value="5">AB+</option>
-                <option value="6">AB-</option>
-                <option value="7">O+</option>
-                <option value="8">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
            </select>
             <label for="number"> Phone Number<span class="required">*</span>  </label>
             <input type="number" name="number" id="number">
@@ -116,6 +111,54 @@ $address=$_POST['address'];
             </div>
         </form>
     </div>
+
+<script>
+function registerformvalidate() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm_password = document.getElementById("confirm_password").value;
+    const blood = document.getElementById("blood").value;
+    const number = document.getElementById("number").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const dob = document.getElementById("dob").value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+
+    let errors = [];
+
+    if (name === "") errors.push("Name is required.");
+    if (email === "") errors.push("Email is required.");
+    if (!email.match(/^\S+@\S+\.\S+$/)) errors.push("Email format is invalid.");
+    if (password.length < 6) errors.push("Password must be at least 6 characters.");
+    if (password !== confirm_password) errors.push("Passwords do not match.");
+    if (blood === "") errors.push("Please select a blood group.");
+    if (!number.match(/^(97|98)\d{8}$/)) {
+    errors.push("Phone number must start with 97 or 98 and be 10 digits long.");
+}
+    if (address === "") errors.push("Address is required.");
+    const birthDate = new Date(dob);
+const today = new Date();
+const age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+}
+if (age < 18) {
+    errors.push("You must be at least 18 years old to register.");
+}
+    if (!gender) errors.push("Gender selection is required.");
+
+    if (errors.length > 0) {
+        alert(errors.join("\nabbbbb"));
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+
     <?php include '../V-project/Include/footer.php' ?>
 </body>
 
