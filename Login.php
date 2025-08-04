@@ -1,13 +1,11 @@
 <?php
 $user=0;
-include_once '../V-project/Include/header.php';
 include 'dbms connection.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-
     $sql = "SELECT user_id, password, role FROM members WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $email);
@@ -15,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_stmt_get_result($stmt);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        if ($password=== $row['password'] ){
+        if (password_verify($password, $row['password'] )){
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['role'] = $row['role'];
             header("Location: dashboard.php");
@@ -39,10 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="Css/style.css">
 </head>
 <body>
+    <nav>
+    <div class="container">
+        <div class="logo"><img src="/Images/logo.jpg" alt="Missing image"></div>
+         <ul class="navlink">
+         <li><a href="Index.html">Home</a></li>  
+         <li><a href="About">About Us</a></li>
+         <li><a href="Contact">Contact</a></li>
+         <button onclick="location.href='signup.php'">Register</button>
+         
+         </ul>
+        </div>
+    </nav>
      <?php
     if($user){
      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong>Error! Invalid creditional</strong>
+     <strong>Error! Invalid credentials</strong>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
     }
@@ -53,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-body">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
-                <label for="password">Enter Password</label>
+                <label for="password">Password</label>
                 <input type="password" name="password" id="password">
                 <button type="submit" name="submit">Log In</button>
                 <a href="">Forget password</a>
-                <a href="signup.php">You don't have Member</a>
+                <a href="signup.php">Not a Member yet? Register here</a>
                 
             </div>
         </form>

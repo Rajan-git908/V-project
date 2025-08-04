@@ -3,20 +3,35 @@ $sucess=0;
 include 'dbms connection.php';
 
 // Insert logic
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_POST['user_id'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $donor_id = $_POST['donor_id'];
+    $receiver_id = $_POST['receiver_id'];
+    $request_id = $_POST['request_id'];
+    $patient_name = $_POST['patient_name'];
     $blood_group = $_POST['blood_group'];
     $location = $_POST['location'];
-    $receiver_name=$_POST['receiver_name'];
-    $date = $_POST['date'];
+    $donation_date = $_POST['donation_date'];
+    $remarks = $_POST['remarks'];
 
-    $sql= "INSERT INTO donation (user_id, blood_group, location, Receiver_Name, date) VALUES ('$user_id','$blood_group', '$location', '$receiver_name','$date')";
-    if(mysqli_query($conn,$sql)) {
-        //echo "Donation record inserted successfully.";
-        $sucess=1;
-        header('location:admin_dashboard.php');
+    // Handle Image Upload
+    $image_path = '';
+    if (!empty($_FILES['donation_image']['name'])) {
+        $target_dir = "uploads/";
+        $image_path = $target_dir . basename($_FILES["donation_image"]["name"]);
+        move_uploaded_file($_FILES["donation_image"]["tmp_name"], $image_path);
+    }
+
+    $sql = "INSERT INTO donation_history (donor_id, receiver_id, request_id, patient_name, blood_group, location, donation_date, image_path, remarks) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiissssss", $donor_id, $receiver_id, $request_id, $patient_name, $blood_group, $location, $donation_date, $image_path, $remarks);
+
+    if ($stmt->execute()) {
+        echo "✅ Donation recorded successfully.";
+        // You may want to update request status too!
     } else {
-        echo "Error: " . mysqli_error($conn);
+        echo "❌ Error: " . $stmt->error;
     }
 
 }

@@ -1,12 +1,26 @@
 <?php
 include 'dbms connection.php';
+session_start();
+$user_id = $_SESSION['user_id'];
+
+$summary_sql = "SELECT 
+    COUNT(*) AS total,
+    MAX(donation_date) AS last,
+    DATE_ADD(MAX(donation_date), INTERVAL 90 DAY) AS next_eligible
+FROM donation_history
+WHERE donor_id = ?";
+$summary_stmt = $conn->prepare($summary_sql);
+$summary_stmt->bind_param("i", $user_id);
+$summary_stmt->execute();
+$summary_result = $summary_stmt->get_result();
+$summary = $summary_result->fetch_assoc();
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $receiver_id=$_POST['receiver_id'];
     $patient_name=$_POST['patient_name'];
     $blood_group=$_POST['blood_group'];
     $location=$_POST['location'];
-    $date=$_POST['date'];
+    $date=$_POST['Request date'];
      
     $sql="INSERT INTO blood_request (Receiver_id,Patient_Name,Blood_group,Location,Date) values ('$receiver_id','$patient_name','$blood_group','$location','$date')";
     mysqli_query($conn,$sql);
@@ -198,7 +212,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#history">Donation History</a></li>
                 <button onclick="showRequestForm()">Blood Requests</button>
-                <li><a href="#resources">Resources</a></li>
+                <li><a href="">Resources</a></li>
                 <li><a href="logout.php">Log out</a></li>
             </ul>
         </div>
@@ -233,7 +247,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                         <option value="O-">O-</option>
                     </select>
                     <input type="text" name="location" placeholder="Location" required>
-                    <input type="date" name="date" required>
+                    <input type="date" name="Request date" required>
                     <button type="submit">Submit Request</button>
             </form>
         </div>
@@ -244,7 +258,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     <div class="do-co-body">
                         <div>
                             <h4>Total Donations</h4>
-                            <h2 id="totalDonations">8</h2>
+                            <h2 id="totalDonations"><?php echo $summary['total'] ?? 0; ?></h2>
+<p>Last Donation: <?php echo $summary['last'] ?? 'N/A'; ?></p>
+<p>Next Eligible Date: <?php echo $summary['next_eligible'] ?? 'N/A'; ?></p>
                         </div>
                         
                     </div>
@@ -255,7 +271,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <div class="do-history">
                     <div class="do-head">Recent Donations</div>
                     <div class="do-body" id="donationHistory">
-                        <!-- Dynamic content will be inserted here -->
+                        $history_sql = "SELECT donation_date, patient_name, blood_group, location FROM donation_history WHERE donor_id = ? ORDER BY donation_date DESC LIMIT 5";
+$history_stmt = $conn->prepare($history_sql);
+$history_stmt->bind_param("i", $user_id);
+$history_stmt->execute();
+$history_result = $history_stmt->get_result();
+
+while ($row = $history_result->fetch_assoc()) {
+    echo "<div class='donation-record'>
+            <strong>{$row['donation_date']}</strong> – 
+            {$row['patient_name']} ({$row['blood_group']}) at {$row['location']}
+          </div>";
+}
                     </div>
                 </div>
             </section>
@@ -332,7 +359,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             document.getElementById("requestForm").style.display = "block";
         }
 
-        // Sample data loading for donations
+        
     </script>
 </body>
 </html>

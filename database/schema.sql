@@ -22,19 +22,52 @@ create table if not exists members(
  
 
 --default Admin 
-Insert into members(Name,DOB,Gender,Blood_Group_id,Email,Password,Phone,Address,role) values ('Ajit Shah','2003-07-05','Male','3','ajitshah000@gmail.com','9090','9817622807','janakpur','admin');
+--password : Ajit@123 
+Insert into members(Name,DOB,Gender,Blood_Group,Email,Password,Phone,Address,role) values ('Ajit Shah','2003-07-05','Male','A+','ajitshah000@gmail.com','$2y$10$W6hn.Q4jlVzgR6Ca7wEDTep40glo2Smm27vIAcCX0ebfHMyyzsh9W','9817622807','janakpur','admin');  
+
+-- request history
+CREATE TABLE blood_request (
+    request_id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id INT NOT NULL,
+    patient_name VARCHAR(100) NOT NULL,
+    blood_group VARCHAR(5) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    request_date DATE NOT NULL,
+    status ENUM('pending', 'approved', 'rejected', 'fulfilled') DEFAULT 'pending',
+    FOREIGN KEY (receiver_id) REFERENCES members(user_id)
+);
 
 --Donation history Table 
 CREATE TABLE donation_history (
-  Donation_id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  donation_date DATE NOT NULL,
-  volume_ml INT CHECK (volume_ml > 0),
-  location VARCHAR(100),
-  remarks TEXT,
-  FOREIGN KEY (user_id) REFERENCES members(user_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
+    donation_id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    request_id INT, -- optional link to blood_request
+    patient_name VARCHAR(100) NOT NULL,
+    blood_group VARCHAR(5) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    donation_date DATE NOT NULL,
+    image_path VARCHAR(255), -- stores image filename
+    remarks TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (donor_id) REFERENCES members(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES members(user_id),
+    FOREIGN KEY (request_id) REFERENCES blood_request(request_id)
+); 
+
+
+
+ 
+-- donar summary
+
+CREATE VIEW donor_summary AS
+SELECT 
+    donor_id,
+    MAX(donation_date) AS last_donation,
+    DATE_ADD(MAX(donation_date), INTERVAL 90 DAY) AS next_eligible_date,
+    COUNT(*) AS total_donations
+FROM donation_history
+GROUP BY donor_id;
 
 
