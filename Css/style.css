@@ -1,8 +1,15 @@
-*{
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0;
+:root {
+  --clr-primary: #ff2200;
+  --clr-secondary: #00ff6a;
+  --clr-bg: #f5f5f5;
+  --space-md: 16px;
+  --radius-md: 8px;
 }
+
+/* Base Reset */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+ 
 .container {
     background-color: antiquewhite;
     height: 80px;
