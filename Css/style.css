@@ -167,7 +167,7 @@ width: 100%;
     list-style:square;
 }
 .eligible button {
-    color: red;
+    color: rgb(19, 17, 17);
     border-color: red;
     border-radius: 5px;
     padding: 5px;
