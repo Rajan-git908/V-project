@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("iiissssss", $donor_id, $receiver_id, $request_id, $patient_name, $blood_group, $location, $donation_date, $image_path, $remarks);
 
     if ($stmt->execute()) {
-        echo "✅ Donation recorded successfully.";
+        echo "Donation recorded successfully.";
         // You may want to update request status too!
     } else {
-        echo "❌ Error: " . $stmt->error;
+        echo "Error: " . $stmt->error;
     }
 
 }

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <nav>
     <div class="container">
-        <div class="logo"><img src="/Images/logo.jpg" alt="Missing image"></div>
+        <div class="logo"><img src="Images/logo.jpg" alt="missing image"></div>
          <ul class="navlink">
          <li><a href="Index.html">Home</a></li>  
          <li><a href="About">About Us</a></li>
