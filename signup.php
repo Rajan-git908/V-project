@@ -1,20 +1,18 @@
 <?php 
 require_once '../V-project/Include/header.php';
-$sucess=0;
 $user=0;
 include 'dbms connection.php';
-
+if($_SERVER['REQUEST_METHOD']==='POST'){
 $name=$_POST['name'];
 $dob=$_POST['dob']; 
 $gender=$_POST['gender'];
 $blood_group=$_POST['blood'];
 $email=$_POST['email'];
 $password=$_POST['password'];
-$c_password=$_POST['confirm_password'];
-
 $number=$_POST['number'];
 $address=$_POST['address'];
    
+$hashed_password=password_hash($password, PASSWORD_DEFAULT);
 
    $sql="SELECT *FROM MEMBERS WHERE email='$email'";
     $result=mysqli_query($conn,$sql);
@@ -24,22 +22,21 @@ $address=$_POST['address'];
     //echo ("error: data already exit");
     $user=1;
    }else{
-        $sql="Insert into members(Name,DOB,Gender,Blood_Group,Email,Password,Phone,Address) values ('$name','$dob','$gender','$blood_group','$email','$password','$number','$address')";
+        $sql="Insert into members(Name,DOB,Gender,Blood_Group,Email,Password,Phone,Address) values ('$name','$dob','$gender','$blood_group','$email','$hashed_password','$number','$address')";
         if(mysqli_query($conn,$sql)){
             //echo "data inserted sucessfully";
             
-           $sucess=1;
            session_start();
-           $_SESSION['email']='email';
-           //header('Location:index.html');
+           $_SESSION['email']=$email;
+           header('Location:Login.php');
+           exit();
       }else{
           echo ("error: ".mysqli_connect_error());
    }
  }
 
 }
-
-//}
+}
 
 ?>
 
@@ -59,7 +56,7 @@ $address=$_POST['address'];
     <?php
     if($user){
      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong>Error! user alrready exit</strong>
+     <strong>Error! user alrready exit.</strong>
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
    }

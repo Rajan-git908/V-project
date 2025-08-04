@@ -33,7 +33,6 @@
             blood. Your single donation can saves up to 3 lives.</p>
             <div class="cover-button">
                 <button onclick="location.href='signup.php'">Become a donor</button>
-                <button onclick="location.href='Login.php'">Login</button>
             </div>
         </div>
     </div>
@@ -45,19 +44,19 @@
 
             <div class="body-content">
 
-            <div id="a">
-                <h1>1. Register</h1>
-                <p>Create Your donnor account and complete your profile with nessary details.</p>
+                <div id="a">
+                    <h1>1. Register</h1>
+                    <p>Create Your donnor account and complete your profile with nessary details.</p>
+                </div>
+                <div id="a">
+                    <h1>2. Schedule</h1>
+                    <p>Book an Appointment at your nearest donation center at your convenience.</p>
+                </div>
+                <div id="a">
+                    <h1>3.Donate</h1>
+                    <p>Visit the center, complete a quick health check, and donate blood to save lives.</p>
+                </div>
             </div>
-            <div id="a">
-                <h1>2. Schedule</h1>
-                <p>Book an Appointment at your nearest donation center at your convenience.</p>
-            </div>
-            <div id="a">
-                <h1>3.Donate</h1>
-                <p>Visit the center, complete a quick health check, and donate blood to save lives.</p>
-            </div>
-        </div>
         </div>
 
     </section>
@@ -69,36 +68,105 @@
                 <p>A single donation can save up to 3 lives.</p>
                 <li>Health Benefits</li>
                 <p>Regular donation helps maintain healthy iron levels.</p>
-                <li>Free Health Check </li><p>Receive a free mini health screening with every donation</p>
+                <li>Free Health Check </li>
+                <p>Receive a free mini health screening with every donation</p>
 
             </ul>
         </div>
-            <div class="eligible">
-                <h2>Are you Eligible?</h2>
-                <ul>
-                    <li>Age: 18-65 years old.</li>
-                    <li>Weight: At least 50kg (110 lbs)</li>
-                    <li>Good Health Condition</li>
-                    <li>No tattoos/piercings in last 6 months</li>
-                    <li>NO major surgery in last 6 months</li>
-                    <li>NOt pregnant or breastfeeding</li>
-                </ul>
-                <button>Check full eligibility Criteria</button>
-            </div>
-        
+        <div class="eligible">
+            <h2>Are you Eligible?</h2>
+            <ul>
+                <li>Age: 18-65 years old.</li>
+                <li>Weight: At least 50kg (110 lbs)</li>
+                <li>Good Health Condition</li>
+                <li>No tattoos/piercings in last 6 months</li>
+                <li>NO major surgery in last 6 months</li>
+                <li>NOt pregnant or breastfeeding</li>
+            </ul>
+            <button>Check full eligibility Criteria</button>
+        </div>
+
     </section>
     <div class="need">
         <h2>Emergency Blood Need?</h2>
         <p>If you need Urgently, please contact us immediately or submit a blood request.</p>
-        <button>Call Emergency</button>
-        <button>Request blood</button>
+        <button onclick="centerlist()">Call Emergency</button>
+        <button onclick="location.href='signup.php'">Request blood</button>
     </div>
     <div class="donation-center">
         <h2>Our Donation Centers</h2>
         <p>Find a blood donation center near you</p>
         <br>
         <h4>Error loading donation centers. Please try again later.</h4>
-        <button>View all centers</button>
+        <button onclick="centerlist()">View all centers</button>
+        <div id="centerlist" style="display: none;"></div>
+        <div id="centerlist-list" style="display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5)">
+            <div style="background:white; margin:5% auto; padding:2rem; border-radius:8px; width:auto">
+            <h2>Major blood bank in Kathmandu Valley</h2>
+                <table>
+                    <tr><th>Blood Bank</th>
+                        <th>Location</th>
+                        <th>Contact Number</th></tr>
+                    <tr>
+                        <td>Central NRCS Blood Bank</td>
+                        <td>Soaltee Mode, Kathmandu</td>
+                        <td>01-4288485</td>    
+                    </tr>
+                    <tr>
+                        <td>Bhaktapur NRCS Blood Bank</td>
+                        <td>Bhaktapur</td>
+                        <td>01-6611661, 01-6612266</td>    
+                    </tr>
+                    <tr>
+                        <td>Lalitpur NRCS Blood Bank</td>
+                        <td>Pulchowk, Lalitpur</td>
+                        <td>01-5427033</td>    
+                    </tr>
+                    <tr>
+                        <td>Teaching Hospital Blood Bank</td>
+                        <td>Maharajgunj, Kathmandu</td>
+                        <td>01-44123030, 01-4410911</td>    
+                    </tr>
+                    <tr>
+                        <td>Patan Hospital Blood Bank</td>
+                        <td>Patan, Lalitpur</td>
+                        <td>01-5522295</td>    
+                    </tr>
+                    <tr>
+                        <td>Nepal Police Hospital Blood Bank</td>
+                        <td>Maharajgunj, Kathmandu</td>
+                        <td>01-4412430</td>    
+                    </tr>
+                   
+                    
+                </table>
+                <h2>Major Blood Bank Outside Kathmandu Valley</h2>
+                <table>
+                    <tr><th>Blood Bank</th>
+                        <th>Location</th>
+                        <th>Contact Number</th></tr>
+                    <tr><td>NRCS Regional BTSC</td>
+                        <td>Biratnagar</td>
+                        <td>021-523326</td></tr>
+                        <tr>
+                            <td>Dhanusha District BTSC</td>
+                            <td>Janakpur</td>
+                            <td>041-520870</td>
+                        </tr>
+                        <tr>
+                            <td>Sunsari District BTSC</td>
+                            <td>Dharan</td>
+                            <td>025-525555</td>
+                        </tr>
+                        <tr>
+                            <td>Dang District BTSC</td>
+                            <td>Ghorahi</td>
+                            <td>082-561460</td>
+                        </tr>
+                </table>
+            </div>
+
+        </div>
     </div>
 
     <div class="cover-2">
@@ -106,7 +174,7 @@
         <p>Join thousands of donors who are saving lives every days.</p>
         <div class="cover-button">
             <button onclick="location.href='signup.php'">Become a donor</button>
-            <button onclick="location.href='Login.php'">Login</button>
+            
         </div>
     </div>
     <footer id="About">
@@ -131,16 +199,25 @@
             <div class="follow">
                 <h3>Follow Us</h3>
                 <ul>
-                    <li><a href="https://www.facebook.com/share/1B8cVS2DEd/"  id="facebook"><i class="fa fa-facebook">
-                        </i></a></li>
+                    <li><a href="https://www.facebook.com/share/1B8cVS2DEd/" id="facebook"><i class="fa fa-facebook">
+                            </i></a></li>
                     </li>
-                    <li><a href="https://www.instagram.com" id="instagram"><i class="fa fa-instagram" ></i></a></li>
-                    <li><a href="https://www.youtube.com"  id="youtube"><i class="fa fa-youtube-play"></i></a></li>
+                    <li><a href="https://www.instagram.com" id="instagram"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    <li><a href="https://www.youtube.com" id="youtube"><i class="fa fa-youtube-play"></i></a>
+                    </li>
             </div>
-            
+
         </div>
-            <div class="rights">&copy; BIT Student(Rajan Sharma). All rights reserved.</div>
+        <div class="rights">&copy; BIT Student(Rajan Sharma). All rights reserved.</div>
     </footer>
+
+    <script>
+        function centerlist() {
+            document.getElementById("centerlist-list").style.display = 'block';
+        }
+    </script>
+
 </body>
 
 </html>

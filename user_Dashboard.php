@@ -296,7 +296,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     </div>
 
     <!-- Edit Profile Modal -->
-    <div id="editProfileModal" class="modal" style="display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5)">
+    <div id="ed class="modal" style="display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5)">
         <div style="background:white; margin:5% auto; padding:2rem; border-radius:8px; width:500px">
             <span style="float:right; cursor:pointer" onclick="closeModal()">&times;</span>
             <h2>Edit Profile</h2>
