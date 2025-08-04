@@ -15,7 +15,7 @@ $user_id = $_SESSION['user_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="Css/dashboard.css">
+     <link rel="stylesheet" href="Css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
@@ -26,9 +26,7 @@ $user_id = $_SESSION['user_id'];
 
     <nav>
         <div class="header">
-            <div class="logo">
-                <img src="../V-project/Images/logo.jpg" alt="missing image">
-            </div>
+            <div class="logo"><img src="/Blood transfusing/V-project/Images/logo.jpg" alt="Missing image"></div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#about">About Us</a></li>
@@ -39,6 +37,22 @@ $user_id = $_SESSION['user_id'];
         </div>
     </nav>
 
+<body data-user-id="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
+    <nav>
+        <div class="header">
+            <div class="logo">
+                <img src="/V-project/Images/logo.jpg" alt="Blood donation system logo">
+            </div>
+            <ul>
+                <li><a href="#dashboard">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#history">Donation History</a></li>
+                <button onclick="showRequestForm()">Blood Requests</button>
+                <li><a href="">Resources</a></li>
+                <li><a href="logout.php">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="profile">
         <div class="profile-head">
             <h1 id="name"></h1>
