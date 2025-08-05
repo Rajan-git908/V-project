@@ -419,3 +419,71 @@ footer {
         padding: 15px;
       }
     }
+
+    .gallary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background-color: #f4f7fc;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallary div {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallary div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+ @keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.gallary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background-color: #f4f7fc;
+}
+
+.gallary div {
+  opacity: 0;
+  animation: slideIn 0.6s forwards;
+}
+
+/* Apply delays to each item */
+.gallary div:nth-child(1) { animation-delay: 0.1s; }
+.gallary div:nth-child(2) { animation-delay: 0.3s; }
+.gallary div:nth-child(3) { animation-delay: 0.5s; }
+.gallary div:nth-child(4) { animation-delay: 0.7s; }
+.gallary div:nth-child(5) { animation-delay: 0.9s; }
+.gallary div:nth-child(6) { animation-delay: 1.1s; }
+
+.gallary img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallary div:hover img {
+  transform: scale(1.1) rotate(-2deg);
+}
