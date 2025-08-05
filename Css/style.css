@@ -10,13 +10,18 @@
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
  
+nav {
+  background-color: rgb(249, 99, 69);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 .container {
-    background-color: antiquewhite;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .logo img {
     height: 100%;
@@ -32,7 +37,7 @@ html { box-sizing: border-box; }
 }
 .navlink li a {
     text-decoration: none;
-    color: brown;
+    color: rgb(56, 54, 54);
     cursor: pointer;
 }
 .navlink li a:hover {
@@ -57,7 +62,13 @@ html { box-sizing: border-box; }
 
 /*home body part design*/
 body {
-    padding: 3%;
+    background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
 }
 h2{
     color: #ff0000;
@@ -81,7 +92,7 @@ width: 100%;
 }
 .cover p{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1.5;
     max-width: 700px;
     color: #ffffff;
@@ -231,9 +242,10 @@ button:hover {
 
 /*footer section*/
 footer {
-    background-color: rgb(182, 243, 69);
+    background-color: rgb(221, 169, 169);
     align-items: center;
     padding: 10px 20px 1px 20px;
+
  }
  .footer-content {
     display: flex;
@@ -313,42 +325,28 @@ footer {
 }
 
 /*Registration & Login form style*/
+ 
+
 .container-form {
-    align-content: center;
-    border: 4px solid black;
-    background-color: aqua;
-    margin: 40px;
-    border-radius: 5%;
+    max-width: 400px;
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+    border: 2px solid #e3f2fd;
+    background-color:  #c1d7f8;;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .form-header {
     text-align: center;
-    margin-top: 10px;
-    background-color: greenyellow;
-    font-size: 30px;
-    padding: 3px;
-    border-radius: 12px;
-}
-.form-body {
-    margin: 10px;
-    padding: 5px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-.required {
-    color: red;
-}
-.gender {
-    display: flex;
-    gap: 10px;
+    margin-bottom: 15px;
+    background-color: #a5d5a7;
+    font-size: 24px;
     padding: 10px;
+    border-radius: 8px;
 }
-.form-body label {
-    padding: 3px;
-}
-.form-body input {
-    padding: 6px;
-}
+
 .form-body button {
     color: rgb(255, 255, 255);
     background-color: red;
@@ -362,3 +360,62 @@ footer {
     text-align: center;
     text-decoration: none;
 }
+    .form-body {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    .required {
+      color: red;
+      margin-left: 5px;
+    }
+
+    .gender {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-body button {
+      background-color: #e53935;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-body button:hover {
+      background-color: #43a047;
+    }
+
+    .form-body a {
+      text-align: center;
+      color: #0d47a1;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .container-form {
+        margin: 20px;
+        padding: 15px;
+      }
+    }

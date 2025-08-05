@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="Css/dashboard.css">
 </head>
 <body>
     
@@ -57,8 +58,10 @@ if($sucess){
     </div>';
 }
 ?>
-<!-- HTML Form -->
+
+<div class="container-form">
 <form method="post" action="donate.php">
+    <div class="form-body">
     <label for="user_id">Donor Id:</label>
     <select name="user_id" id="user_id" required>
         <?php
@@ -68,7 +71,7 @@ if($sucess){
             echo "<option value='{$row['user_id']}'>{$row['user_id']}</option>";
         }
         ?>
-    </select><br>
+    </select>
 
     <label for="blood_group">Blood Group:</label>
          <select name="blood_group" id="blood_group" required>
@@ -83,15 +86,16 @@ if($sucess){
                         <option value="O-">O-</option>
                     </select>
     <label for="location">Location:</label>
-    <input type="text" name="location" id="location" required><br>
+    <input type="text" name="location" id="location" required>
 
     <label for="receiver_name">Receiver Name:</label>
-    <input type="text" name="receiver_name" id="receiver_name" required><br>
+    <input type="text" name="receiver_name" id="receiver_name" required>
 
     <label for="date">Donation Date:</label>
-    <input type="date" name="date" id="date" required><br>
+    <input type="date" name="date" id="date" required>
 
     <input type="submit" value="Record Donation">
+    </div>
 </form>
 
-
+</div>

@@ -39,7 +39,8 @@
             </div>
             
         </div>
-            <div class="rights">&copy; BIT Student(Rajan Sharma). All rights reserved.</div>
+            <div class="rights">&copy; BIT Students. All rights reserved.
+            </div>
     </footer>
 
 </body>

@@ -12,9 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li> <i class="fas fa-map-marker-alt"></i>  ${data.Address}
                     <li> <i class="fas fa-tint"></i>  ${data.blood_group_id}
                     <li><i class="fas fa-calendar-check"></i>  ${data.role}
-                    <li> Last donation: ${data.date}</li>
-                <li> Next eligible: 2023-12-15</li>
                 `;
+            
                 document.getElementById("totaldonations").textContent = data.total_donations;
                 document.getElementById("count1").textContent = data.lives_impacted;
                 document.getElementById("count2").textContent = parseInt(data.total_donations) + 5;
