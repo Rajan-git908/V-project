@@ -63,17 +63,21 @@ WHERE donor_id = ?";
         ?>
         <div class="donation-container">
             <div class="do-head">Your donation Impact</div>
-            
-
+            <div class="do-co-body">
                 <div>
                     <h4>Total Donations</h4>
-                    <h2><?php echo $summary['total'] ?? 0; ?></h2>
-                    <h2><?php echo date('d M Y', strtotime($summary['last'])) ?? 'N/A'; ?></h2>
-                    <h2><?php echo date('d M Y', strtotime($summary['next_eligible'])) ?? 'N/A'; ?></h2>
+                    <h2 id="totalDonations"><?php echo $summary['total'] ?? 0; ?></h2>
                 </div>
-        </div>
-
-        <div class="do-history">
+                <div>
+                    <h4>Last Donation</h4>
+                    <h5> <?php echo $summary['last'] ?? 'N/A'; ?></h5>
+                </div>
+                <div>
+                    <h4>Next Eligible Date </h4>
+                    <h5> <?php echo $summary['next_eligible'] ?? 'N/A'; ?></h5>
+                </div>
+            </div>
+         <div class="do-history">
             <div class="do-head">Recent Donations</div>
             <div class="do-body">
                 <?php
@@ -84,10 +88,17 @@ WHERE donor_id = ?";
                 $result = $history_stmt->get_result();
 
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div>
-            <strong>{$row['donation_date']}</strong> — 
-            {$row['patient_name']} ({$row['blood_group']}) at {$row['location']}
-          </div>";
+                    echo "<div class='donation-record'>
+                             <table>
+                            <thead>
+                                <th>Dontion_date
+                                <th>Patient_name
+                                <th>Blood_Group
+                            </thead>
+                        
+          <tbody><tr><td>  {$row['donation_date']}</td>
+          <td> {$row['patient_name']}</td><td> ({$row['blood_group']})</td>
+          </tr></tbody></table></div>";
                 }
 
                 $update = $conn->prepare("UPDATE blood_request SET status = 'fulfilled' WHERE request_id = ?");
@@ -95,39 +106,24 @@ WHERE donor_id = ?";
                 $update->execute();
                 ?>
             </div>
+        </div>   
         </div>
 
-        <section id="history">
-            <div class="do-history">
-                <div class="do-head">Recent Donations</div>
-                <div class="do-body" id="donationHistory">
-                    <?php $history_sql = "SELECT donation_date, patient_name, blood_group, location FROM donation_history WHERE donor_id = ? ORDER BY donation_date DESC LIMIT 5";
-                    $history_stmt = $conn->prepare($history_sql);
-                    $history_stmt->bind_param("i", $user_id);
-                    $history_stmt->execute();
-                    $history_result = $history_stmt->get_result();
+        
 
-                    while ($row = $history_result->fetch_assoc()) {
-                        echo "<div class='donation-record'>
-            <strong>{$row['donation_date']}</strong> – 
-            {$row['patient_name']} ({$row['blood_group']}) at {$row['location']}
-          </div>";
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-</div>
-        <section>
+    </div>
 
-
-
-            <iframe src="admin_review.php" width="100%" height="600px" style="border:none;"></iframe>
-            <div class="card">
-
-            </div>
-        </section>
     
+    <section>
+
+
+
+        <iframe src="admin_review.php" width="100%" height="600px" style="border:none;"></iframe>
+        <div class="card">
+
+        </div>
+    </section>
+
 
 
 </body>

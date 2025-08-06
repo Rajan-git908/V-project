@@ -112,13 +112,14 @@ button:hover {
 .do-co-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 0.5rem;
 }
 
 .do-co-body div {
+  
   text-align: center;
   padding: 1rem;
-  background: #f8f9fa;
+  background: #ace2b9;
   border-radius: 8px;
 }
 

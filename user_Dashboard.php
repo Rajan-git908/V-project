@@ -84,34 +84,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button onclick="openEditModal()">Edit profile</button>
             </div>
         </div>
-        
+
         <div id="requestForm" style="display: none;">
             <div class="container-form">
-            <form action="user_Dashboard.php" method="post">
-                <div class="form-body">
-                <label for="receiver_id">Receiver Id:</label>
-                <input type="number" name="receiver_id" id="receiver_id" required>
-                <label for="patient_name">Patient_name</label>
-                <input type="text" name="patient_name" id="patient_name" required>
-                <label for="blood_group">Blood_Group:</label>
-                <select name="blood_group" id="blood_group" required>
-                    <option value="">Select Blood Group</option>
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                </select>
-                <label for="location">Location</label>
-                <input type="text" name="location" id="location" required>
-                <label for="request_date">Date:</label>
-                <input type="date" name="request_date" id="request_date" required>
-                <button type="submit">Submit Request</button>
-            </div></form>
-        </div>
+                <form action="user_Dashboard.php" method="post">
+                    <div class="form-body">
+                        <label for="receiver_id">Receiver Id:</label>
+                        <input type="number" name="receiver_id" id="receiver_id" required>
+                        <label for="patient_name">Patient_name</label>
+                        <input type="text" name="patient_name" id="patient_name" required>
+                        <label for="blood_group">Blood_Group:</label>
+                        <select name="blood_group" id="blood_group" required>
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" required>
+                        <label for="request_date">Date:</label>
+                        <input type="date" name="request_date" id="request_date" required>
+                        <button type="submit">Submit Request</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="main-content">
             <section id="dashboard">
@@ -121,8 +122,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div>
                             <h4>Total Donations</h4>
                             <h2 id="totalDonations"><?php echo $summary['total'] ?? 0; ?></h2>
-                            <p>Last Donation: <?php echo $summary['last'] ?? 'N/A'; ?></p>
-                            <p>Next Eligible Date: <?php echo $summary['next_eligible'] ?? 'N/A'; ?></p>
+                        </div>
+                        <div>
+                            <h4>Last Donation</h4>
+                            <h5> <?php echo $summary['last'] ?? 'N/A'; ?></h5>
+                        </div>
+                        <div>
+                            <h4>Next Eligible Date </h4>
+                            <h5> <?php echo $summary['next_eligible'] ?? 'N/A'; ?></h5>
                         </div>
 
                     </div>
@@ -133,6 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="do-history">
                     <div class="do-head">Recent Donations</div>
                     <div class="do-body" id="donationHistory">
+                       
                         <?php $history_sql = "SELECT donation_date, patient_name, blood_group, location FROM donation_history WHERE donor_id = ? ORDER BY donation_date DESC LIMIT 5";
                         $history_stmt = $conn->prepare($history_sql);
                         $history_stmt->bind_param("i", $user_id);
@@ -141,9 +149,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         while ($row = $history_result->fetch_assoc()) {
                             echo "<div class='donation-record'>
-            <strong>{$row['donation_date']}</strong> – 
-            {$row['patient_name']} ({$row['blood_group']}) at {$row['location']}
-          </div>";
+                             <table>
+                            <thead>
+                                <th>Dontion_date
+                                <th>Patient_name
+                                <th>Blood_Group
+                            </thead>
+                        
+          <tbody><tr><td>  {$row['donation_date']}</td>
+          <td> {$row['patient_name']}</td><td> ({$row['blood_group']})</td>
+          </tr></tbody></table></div>";
                         }
                         ?>
                     </div>

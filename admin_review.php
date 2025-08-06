@@ -57,6 +57,7 @@ $result = $conn->query($sql);
     <thead>
 <tr>
     <th>Request ID</th>
+    <th>Receiver Id </th>
 <th>Patient Name</th>
 <th>Blood Group</th>
 <th>Location</th>
@@ -68,6 +69,7 @@ $result = $conn->query($sql);
 <?php while ($row = $result->fetch_assoc()): ?>
     <tr>
         <td><?= htmlspecialchars($row['request_id']) ?></td>
+        <td><?= htmlspecialchars($row['receiver_id']) ?></td>
         <td><?= htmlspecialchars($row['patient_name'])?></td>
         <td><?= htmlspecialchars($row['blood_group'])?></td>
         <td><?= htmlspecialchars($row['location'])?></td>
