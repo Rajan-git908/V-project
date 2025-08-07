@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li> <i class="fas fa-map-marker-alt"></i>  ${data.Address}
                     <li> <i class="fas fa-tint"></i>  ${data.blood_group}
                     <li><i class="fas fa-calendar-check"></i>  ${data.role}
-                    <li> <i class="fas fa-tint"></i>
                 `;
             
                  } else {
